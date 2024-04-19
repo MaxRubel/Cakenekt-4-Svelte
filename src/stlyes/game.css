@@ -1,0 +1,23 @@
+.chat-container {
+  margin-top: auto;
+  margin-bottom: auto;
+  min-width: 375px;
+  display: flex;
+}
+
+.messages-container {
+  margin-top: auto;
+  min-width: 375px;
+  height: 60vh;
+  overflow: auto;
+  border: 1px solid grey;
+}
+
+.input-container {
+  height: 50px;
+}
+
+.chat-message-input {
+  min-width: 375px;
+  height: 50px !important;
+}

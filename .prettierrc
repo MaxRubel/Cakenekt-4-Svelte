@@ -1,0 +1,9 @@
+{
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "useTabs": false,
+    "svelteSortOrder": "scripts-styles-markup"
+  }
+}
