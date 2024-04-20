@@ -13,6 +13,7 @@
   const db = firebase.database();
   let messages = [];
   let messageValue;
+  let scrollHere;
 
   onMount(() => {
     const messagesRef = db
@@ -24,6 +25,9 @@
       const newMessage = snapshot.val();
       if (newMessage) {
         messages = [...messages, newMessage];
+        requestAnimationFrame(() => {
+          scrollHere.scrollIntoView({ behavior: "smooth" });
+        });
       }
     };
 
@@ -71,6 +75,9 @@
     {#each messages as message (message.id)}
       <MessageCard {message} />
     {/each}
+    <div bind:this={scrollHere}>
+      <!-- This is the element that will be scrolled into view -->
+    </div>
   </div>
 
   <form on:submit|preventDefault={handleSubmit}>
@@ -91,7 +98,7 @@
 
 <style>
   .messages-container {
-    height: 15vh;
+    height: 25vh;
     font-size: 20px;
     text-align: left;
   }
