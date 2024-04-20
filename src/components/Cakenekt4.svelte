@@ -22,6 +22,7 @@
   const gameId = url.pathname.split("/").pop();
   const db = firebase.database();
   let isPlayerNo;
+  let canUpdate = false;
 
   const unsubscribe = isPlayer.subscribe((value) => {
     isPlayerNo = value;
@@ -91,7 +92,7 @@
     // ) {
     //   return;
     // }
-
+    canUpdate = true;
     if (e.key === "ArrowLeft" || e.key === "a") {
       gameState = {
         ...gameState,
@@ -123,7 +124,7 @@
       [null, null, null, null, null, null],
       [null, null, null, null, null, null],
     ];
-
+    canUpdate = true;
     gameState = {
       ...gameState,
       state: "playing",
@@ -134,7 +135,10 @@
   };
 
   $: {
-    updateGame({ gameId, ...gameState });
+    if (canUpdate) {
+      updateGame({ gameId, ...gameState });
+      canUpdate = false;
+    }
   }
 
   onMount(() => {
