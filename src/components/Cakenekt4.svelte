@@ -86,6 +86,7 @@
   const handleKeyDown = (e) => {
     if (
       gameState.state === "won" ||
+      isPlayerNo === 0 ||
       e.target.id === "chatInput" ||
       (isPlayerNo === 1 && gameState.turn === "red") ||
       (isPlayerNo === 2 && gameState.turn === "black")

@@ -4,6 +4,6 @@
 
 <main>
   <div class="text-message">
-    Player {message.player}: {message.message}
+    {message.player > 0 ? `Player ${message.player}` : "Spectator"}: {message.message}
   </div>
 </main>
