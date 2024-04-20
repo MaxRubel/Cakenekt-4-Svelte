@@ -6,7 +6,7 @@
   import Blackpiece from "./Blackpiece.svelte";
   import Redpiece from "./Redpiece.svelte";
   import firebase from "firebase/compat/app";
-  import { getContext, onMount } from "svelte";
+  import { onMount } from "svelte";
   import { updateGame } from "../api requests/game";
   import "../stlyes/cakenekt4.css";
   import "../stlyes/game.css";
@@ -14,6 +14,7 @@
   import { checkForWinner } from "../utils/checkForWinner";
   import Chat from "./Chat.svelte";
   import { isPlayer } from "../lib/PlayerStore";
+  import { navigate } from "svelte-routing";
 
   let gameState = { turn: "black" };
   const currentUrl = window.location.href;
@@ -202,6 +203,14 @@
       </div>
       <Chat {gameId} isPlayer={isPlayerNo} />
     </div>
+    <button
+      class="homeButton"
+      on:click={() => {
+        navigate("/");
+      }}
+    >
+      Home
+    </button>
   </div>
 </main>
 
@@ -209,5 +218,9 @@
   .end-button {
     font-size: 20px;
     margin: 36px 0px;
+  }
+
+  .homeButton {
+    margin: 10px 0px;
   }
 </style>
