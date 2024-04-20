@@ -1,6 +1,6 @@
 <script>
-  import { createNewGame, updateGame } from "../api requests/game";
   import { navigate } from "svelte-routing";
+  import { createNewGame, updateGame } from "../api requests/game";
   import "../stlyes/globals.css";
 
   const handleNewGame = () => {
@@ -11,7 +11,6 @@
       state: "playing",
       playingCol: 3,
     };
-
     createNewGame(payload).then(({ name }) => {
       updateGame({ gameId: name }).then(() => {
         navigate(`/New-Game/${name}`, { replace: true });
