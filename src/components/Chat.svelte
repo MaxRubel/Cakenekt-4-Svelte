@@ -78,7 +78,7 @@
       <textarea
         id="chatInput"
         class="chat-message-input"
-        style="width: 796px; fontSize: 20px;"
+        style="width: 796px; font-size: 20px;"
         name="message"
         bind:value={messageValue}
         on:change={handleChange}

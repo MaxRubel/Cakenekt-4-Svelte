@@ -83,14 +83,15 @@
   };
 
   const handleKeyDown = (e) => {
-    if (
-      gameState.state === "won" ||
-      e.target.id === "chatInput" ||
-      (isPlayerNo === 1 && gameState.turn === "red") ||
-      (isPlayerNo === 2 && gameState.turn === "black")
-    ) {
-      return;
-    }
+    // if (
+    //   gameState.state === "won" ||
+    //   e.target.id === "chatInput" ||
+    //   (isPlayerNo === 1 && gameState.turn === "red") ||
+    //   (isPlayerNo === 2 && gameState.turn === "black")
+    // ) {
+    //   return;
+    // }
+
     if (e.key === "ArrowLeft" || e.key === "a") {
       gameState = {
         ...gameState,
@@ -126,6 +127,7 @@
     gameState = {
       ...gameState,
       state: "playing",
+      playingCol: 3,
       turn: gameState.turn === "red" ? "black" : "red",
       lastChange: null,
     };
@@ -185,13 +187,9 @@
     </div>
     {#if gameState.state === "playing"}
       {#if gameState.turn === "black"}
-        <Blackpiece
-          playingCol={gameState.playingCol ? gameState.playingCol : 3}
-        />
+        <Blackpiece playingCol={gameState.playingCol} />
       {:else}
-        <Redpiece
-          playingCol={gameState.playingCol ? gameState.playingCol : 3}
-        />
+        <Redpiece playingCol={gameState.playingCol} />
       {/if}
     {:else}
       <button class="end-button" on:click={handlePlayAgain}>
@@ -223,6 +221,6 @@
   }
 
   .homeButton {
-    margin: 10px 0px;
+    margin: 30px 0px;
   }
 </style>
