@@ -84,14 +84,14 @@
   };
 
   const handleKeyDown = (e) => {
-    // if (
-    //   gameState.state === "won" ||
-    //   e.target.id === "chatInput" ||
-    //   (isPlayerNo === 1 && gameState.turn === "red") ||
-    //   (isPlayerNo === 2 && gameState.turn === "black")
-    // ) {
-    //   return;
-    // }
+    if (
+      gameState.state === "won" ||
+      e.target.id === "chatInput" ||
+      (isPlayerNo === 1 && gameState.turn === "red") ||
+      (isPlayerNo === 2 && gameState.turn === "black")
+    ) {
+      return;
+    }
     canUpdate = true;
     if (e.key === "ArrowLeft" || e.key === "a") {
       gameState = {
