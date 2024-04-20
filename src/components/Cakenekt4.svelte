@@ -136,6 +136,7 @@
   }
 
   onMount(() => {
+    document.body.style.zoom = 0.75;
     const listenerRef = db.ref("games").orderByChild("gameId").equalTo(gameId);
     const onGameUpdated = (snapshot) => {
       const data = snapshot.val();
@@ -162,6 +163,7 @@
     const listener = listenerRef.on("value", onGameUpdated);
     document.addEventListener("keydown", handleKeyDown);
     return () => {
+      document.body.style.zoom = 1;
       listenerRef.off("value", listener);
       document.removeEventListener("keydown", handleKeyDown);
     };
