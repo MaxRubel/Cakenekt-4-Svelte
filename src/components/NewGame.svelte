@@ -38,9 +38,7 @@
 
   const handleShare = () => {
     navigator.clipboard
-      .writeText(
-        `https://cakenekt-4-svelte.netlify.app/New-Game?gameId=${gameId}`,
-      )
+      .writeText(`https://cakenekt-4-svelte.netlify.app/New-Game/${gameId}`)
       .then(() => {
         window.alert("Game Link Copied!");
       });
